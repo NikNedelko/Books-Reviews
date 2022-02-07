@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstBookStore", "FirstBookStore\FirstBookStore.csproj", "{31FC045D-DCD6-48D0-B385-C4159A589842}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31FC045D-DCD6-48D0-B385-C4159A589842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31FC045D-DCD6-48D0-B385-C4159A589842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31FC045D-DCD6-48D0-B385-C4159A589842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31FC045D-DCD6-48D0-B385-C4159A589842}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
