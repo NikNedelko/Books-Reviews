@@ -50,7 +50,7 @@ namespace FirstBookStore.Repo
 
         public async Task<Book> GetByName(string name)
         {
-            return await _db.Books.FirstOrDefaultAsync(x=>x.name==name);
+            return await _db.Books.FirstOrDefaultAsync(x=>x.Name==name);
         }
     }
 }

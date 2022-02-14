@@ -1,0 +1,23 @@
+@model FirstBookStore.Models.DbModels.Book
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+        <h1>@Model.Name</h1>
+        <h2>@Model.Author</h2>
+        <h6>@Model.Description</h6>
+        <p>Cost:@Model.WasBuy</p>
+        <p>Was add in:@Model.DateCreate</p>
+    <p>
+        <a class="btn btn-warning" href="/book/DeleteById/@Model.id">Delete</a>
+    </p>
+    <p>
+            <a class="btn btn-warning" href="/comment/Add/@Model.id">Add Comment</a>
+        </p>
+    <p>
+        <a class="btn btn-warning" href="/comment/GetByBook/@Model.id">Comments for this book</a>
+    </p>
+</div>

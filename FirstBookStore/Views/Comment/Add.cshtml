@@ -1,0 +1,46 @@
+@model FirstBookStore.Models.DbModels.Comment
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>CommentForm</title>
+        <link rel="stylesheet" href="~/css/styles.css" />
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    </head>
+</head>
+
+<body>
+<div>
+    <div class="panel panel-success">
+        <div class="panel-heading text-center"></div><h4>Comment Form</h4>
+    </div>
+    
+    <form class="p-a-l" asp-action="Add" method="post">
+        
+        <!--- <div asp-validation-summary="All"></div> --->
+        
+        <div class="form-group">
+            <label asp-for="AuthorOfComment">Put your name or username:</label>
+            <input class="form-control" asp-for="AuthorOfComment"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="BodyOfComment">Write here:</label>
+            <input class="form-control" asp-for="BodyOfComment"/>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">
+                Submit comment
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

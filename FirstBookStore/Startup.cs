@@ -30,6 +30,7 @@ namespace FirstBookStore
             services.AddDbContext<AppDbContext>(options => { options.UseMySql(Configuration.GetConnectionString("Default")); });
             services.AddControllersWithViews();
             services.AddScoped<IBookRepo, BookRepository>();
+            services.AddScoped<ICommentRepo, CommentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

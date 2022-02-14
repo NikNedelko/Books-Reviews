@@ -15,24 +15,26 @@ namespace FirstBookStore.Controllers
         {
             _bookRepo = bookRepo;
         }
+        
         [HttpGet]
         public async Task<ViewResult> GetBooks()
         {
             var response = await _bookRepo.Select();
             return View(response);
         }
-
+        
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
+        
         [HttpPost]
         public async Task<ViewResult> Add(Book target)
         {
             if (ModelState.IsValid)
             {
-                target.dateCreate = DateTime.Now;
+                target.DateCreate = DateTime.Now;
                 await _bookRepo.Create(target);
                 return View("Thanks");
             }
@@ -52,6 +54,12 @@ namespace FirstBookStore.Controllers
         public IActionResult Thanks()
         {
             return View();
+        }
+
+        public async Task<ViewResult> IndividualPage(int id)
+        {
+            var targetReview = await _bookRepo.Get(id);
+            return View(targetReview);
         }
     }
 }

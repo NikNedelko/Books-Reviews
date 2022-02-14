@@ -1,0 +1,37 @@
+@model List<FirstBookStore.Models.DbModels.Comment>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>All comments for this book</h2>
+@foreach (var target in Model)
+{
+    <div class="text-center">
+        <h1>@target.AuthorOfComment</h1>
+        <h2>@target.BodyOfComment</h2>
+        <h6>@target.DateAdd</h6>
+        <p>Likes:@target.Likes</p>
+        <p>Dislikes:@target.Dislikes</p>
+        <p>Was add in:@target.DateAdd</p>
+        <p>
+            <a class="btn btn-warning" href="/Comment/DeleteById/@target.id">Delete</a>
+        </p>
+        <div>
+            <h6>Your evaluation</h6>
+            <p>
+                <a class="btn btn-warning" href="/Comment/AddLike/@target">Like</a>
+            </p>
+            <p>
+                <a class="btn btn-warning" href="/Comment/RemoveLike/@target">Remove Like</a>
+            </p>
+            <p>
+                <a class="btn btn-warning" href="/Comment/AddDislike/@target">Dislike</a>
+            </p>
+            <p>
+                <a class="btn btn-warning" href="/Comment/RemoveDislike/@target">Remove Dislike</a>
+            </p>
+        </div>
+    </div>
+}
