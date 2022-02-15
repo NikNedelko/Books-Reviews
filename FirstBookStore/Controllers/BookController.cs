@@ -35,6 +35,11 @@ namespace FirstBookStore.Controllers
             if (ModelState.IsValid)
             {
                 target.DateCreate = DateTime.Now;
+                if (target.Description.Length>151)
+                {
+                    target.ShortDescription = target.Description.Substring(0, 150);
+                    target.ShortDescription += "...";
+                }
                 await _bookRepo.Create(target);
                 return View("Thanks");
             }
@@ -44,6 +49,7 @@ namespace FirstBookStore.Controllers
             }
         }
 
+        [HttpGet]
         public async Task<ViewResult> DeleteById(int id)
         {
             await _bookRepo.DeleteById(id);

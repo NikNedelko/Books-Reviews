@@ -4,17 +4,29 @@
     Layout = "_Layout";
 }
 
+<body>
 @foreach (var target in Model)
 {
-    <div class="text-center">
-        <h1>@target.Name</h1>
-        <h2>@target.Author</h2>
-        <h6>@target.Description</h6>
-        <p>Cost:@target.WasBuy</p>
+    <div class="col-6 col-sm-4">
+        @if (target.LinkToPict!=null)
+        {
+            <a href="/book/IndividualPage/@target.id"><img src="@target.LinkToPict" alt="book pict" height="300"></a>
+        }
+        <h2>@target.Name</h2>
+        <h3>@target.Author</h3>
+        @if (target.Description.Length > 150)
+        {
+            <h6>@target.ShortDescription</h6>
+        }
+        else
+        {
+            <h6>@target.Description</h6>
+        }
         <p>Was add in:@target.DateCreate</p>
         <p>
-            <a class="btn btn-warning" href="/book/IndividualPage/@target.id">Read</a>
-            <a class="btn btn-warning" href="/book/DeleteById/@target.id">Delete</a>
+            <a class="btn btn-info" href="/book/IndividualPage/@target.id">Read</a>
+            <a class="btn btn-danger" href="/book/DeleteById/@target.id">Delete</a>
         </p>
     </div>
 }
+</body>

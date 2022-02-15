@@ -20,19 +20,19 @@ namespace FirstBookStore.Controllers
         //     return View(response);
         // }
         
-        [HttpGet]
-        public async Task<ViewResult> GetByBook(int targetBook)
+       [HttpGet]
+        public async Task<ViewResult> GetByBook(int id)
         {
-            var response = await _commentRepo.GetByBook(targetBook);
+            var response = await _commentRepo.GetByBook(id);
             return View(response);
         }
 
-        private int _bookIdForAddMethod;
+        private static int _bookIdForAddMethod = new int();
         
         [HttpGet]
-        public IActionResult Add(int idForBook)
+        public IActionResult Add(int id)
         {
-            _bookIdForAddMethod = idForBook;
+            _bookIdForAddMethod = id;
             return View();
         }
         
@@ -42,7 +42,7 @@ namespace FirstBookStore.Controllers
             if (ModelState.IsValid)
             {
                 target.DateAdd = DateTime.Now;
-                target.BookId =+ _bookIdForAddMethod;
+                target.BookId = _bookIdForAddMethod;
                 _bookIdForAddMethod = -1;
                 await _commentRepo.Create(target);
                 return View("Thanks");
@@ -52,11 +52,11 @@ namespace FirstBookStore.Controllers
                 return View();
             }
         }
-        
-        public async Task<ViewResult> AddLike(Comment entity)
+        //in developing
+        public async Task /*<ViewResult>*/ AddLike(Comment entity)
         {
             await _commentRepo.AddLike(entity);
-            return await GetByBook(entity.BookId);
+            await GetByBook(entity.BookId);
         }
         
         public async Task<ViewResult> AddDislike(Comment entity)

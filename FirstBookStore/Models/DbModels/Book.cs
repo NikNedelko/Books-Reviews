@@ -16,5 +16,6 @@ namespace FirstBookStore.Models.DbModels
         public int WasBuy { get; set; }
         public DateTime DateCreate { get; set; }
         public string LinkToPict { get; set; }
+        public string ShortDescription { get; set; } //30 words + ...
     }
 }

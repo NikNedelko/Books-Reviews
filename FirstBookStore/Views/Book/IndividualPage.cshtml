@@ -4,20 +4,39 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
+<!DOCTYPE html>
 
+<html>
+<head>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Indiv.Page</title>
+        <link rel="stylesheet" href="~/css/styles.css" />
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    </head>
+</head>
+
+<body>
 <div class="text-center">
-        <h1>@Model.Name</h1>
-        <h2>@Model.Author</h2>
-        <h6>@Model.Description</h6>
-        <p>Cost:@Model.WasBuy</p>
-        <p>Was add in:@Model.DateCreate</p>
     <p>
-        <a class="btn btn-warning" href="/book/DeleteById/@Model.id">Delete</a>
-    </p>
-    <p>
-            <a class="btn btn-warning" href="/comment/Add/@Model.id">Add Comment</a>
-        </p>
-    <p>
-        <a class="btn btn-warning" href="/comment/GetByBook/@Model.id">Comments for this book</a>
+        @if (Model.LinkToPict != null)
+        {
+            <img src="@Model.LinkToPict" alt="Picture" height="450"/>
+        }
     </p>
 </div>
+<div class="text-center">
+    <h2>@Model.Author</h2>
+    <h6>@Model.Description</h6>
+    <p>Cost:@Model.WasBuy</p>
+    <p>Was add in:@Model.DateCreate</p>
+
+    <p>
+        <a class="btn btn-success" href="/comment/Add?id=@Model.id">Add Comment</a>
+        <a class="btn btn-warning" href="/comment/GetByBook?id=@Model.id">Comments for this book</a>
+        <a class="btn btn-danger" href="/book/DeleteById/@Model.id">Delete</a>
+    </p>
+
+</div>
+</body>
+</html>

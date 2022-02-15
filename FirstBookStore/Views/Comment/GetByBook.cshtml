@@ -9,28 +9,21 @@
 @foreach (var target in Model)
 {
     <div class="text-center">
-        <h1>@target.AuthorOfComment</h1>
-        <h2>@target.BodyOfComment</h2>
+        <h3>@target.AuthorOfComment</h3>
+        <h6>@target.BodyOfComment</h6>
         <h6>@target.DateAdd</h6>
-        <p>Likes:@target.Likes</p>
-        <p>Dislikes:@target.Dislikes</p>
+        <p>Likes:@target.Likes,Dislikes:@target.Dislikes</p>
         <p>Was add in:@target.DateAdd</p>
         <p>
-            <a class="btn btn-warning" href="/Comment/DeleteById/@target.id">Delete</a>
+            <a class="btn btn-danger" href="/Comment/DeleteById/@target.id">Delete</a>
         </p>
         <div>
             <h6>Your evaluation</h6>
             <p>
-                <a class="btn btn-warning" href="/Comment/AddLike/@target">Like</a>
-            </p>
-            <p>
-                <a class="btn btn-warning" href="/Comment/RemoveLike/@target">Remove Like</a>
-            </p>
-            <p>
-                <a class="btn btn-warning" href="/Comment/AddDislike/@target">Dislike</a>
-            </p>
-            <p>
-                <a class="btn btn-warning" href="/Comment/RemoveDislike/@target">Remove Dislike</a>
+                <a class="btn btn-outline-success" href="/Comment/AddLike/@target">Like</a>
+                <a class="btn btn-outline-secondary" href="/Comment/RemoveLike/@target">Remove Like</a>
+                <a class="btn btn-outline-danger" href="/Comment/AddDislike/@target">Dislike</a>
+                <a class="btn btn-outline-secondary" href="/Comment/RemoveDislike/@target">Remove Dislike</a>
             </p>
         </div>
     </div>

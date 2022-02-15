@@ -55,7 +55,7 @@ namespace FirstBookStore.Repo
         {
             var target = await Get(entity.id);
             await Delete(entity);
-            target.Likes++;
+            target.Likes+=1;
             await Create(target);
         }
         
