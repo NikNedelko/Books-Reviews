@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FirstBookStore.Models.DbModels;
 
-namespace FirstBookStore.Repo
+namespace FirstBookStore.Repo.Interfaces
 {
     public interface IBaseRepo<T>
     {

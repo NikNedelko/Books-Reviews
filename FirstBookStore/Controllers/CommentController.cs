@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using FirstBookStore.Models.DbModels;
 using FirstBookStore.Repo;
+using FirstBookStore.Repo.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 namespace FirstBookStore.Controllers
 {
@@ -13,14 +15,7 @@ namespace FirstBookStore.Controllers
             _commentRepo = commentRepo;
         }
 
-        // [HttpGet]
-        // public async Task<ViewResult> GetComments()
-        // {
-        //     var response = await _commentRepo.Select();
-        //     return View(response);
-        // }
-        
-       [HttpGet]
+        [HttpGet]
         public async Task<ViewResult> GetByBook(int id)
         {
             var response = await _commentRepo.GetByBook(id);
@@ -52,6 +47,20 @@ namespace FirstBookStore.Controllers
                 return View();
             }
         }
+        
+        public async Task<ViewResult> DeleteWithBook(int id)
+        {
+            await _commentRepo.DeleteWithBook(id);
+            return View("AftherDel");
+        }
+
+        public async Task<ViewResult> DeleteById(int id)
+        {
+            var entityForReturn = await _commentRepo.Get(id);
+            await _commentRepo.DeleteById(id);
+            return View("Delete",entityForReturn);
+        }
+        
         //in developing
         public async Task /*<ViewResult>*/ AddLike(Comment entity)
         {
@@ -77,11 +86,6 @@ namespace FirstBookStore.Controllers
             return await GetByBook(entity.BookId);
         }
 
-        public async Task<ViewResult> DeleteById(int id)
-        {
-            var entityForReturn = await _commentRepo.Get(id);
-            await _commentRepo.DeleteById(id);
-            return View("Delete",entityForReturn);
-        }
+       
     }
 }

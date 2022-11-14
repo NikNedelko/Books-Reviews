@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FirstBookStore.Models.DbModels;
 
-namespace FirstBookStore.Repo
+namespace FirstBookStore.Repo.Interfaces
 {
     public interface ICommentRepo : IBaseRepo<Comment>
     {
@@ -11,5 +11,6 @@ namespace FirstBookStore.Repo
         Task AddDislike(Comment entity);
         Task RemoveLike(Comment entity);
         Task RemoveDislike(Comment entity);
+        Task DeleteWithBook(int idOfBook);
     }
 }

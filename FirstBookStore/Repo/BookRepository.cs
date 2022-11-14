@@ -3,6 +3,7 @@ using FirstBookStore.DbData;
 using FirstBookStore.Models.DbModels;
 using System.Linq;
 using System.Threading.Tasks;
+using FirstBookStore.Repo.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FirstBookStore.Repo
@@ -51,6 +52,14 @@ namespace FirstBookStore.Repo
         public async Task<Book> GetByName(string name)
         {
             return await _db.Books.FirstOrDefaultAsync(x=>x.Name==name);
+        }
+        
+        public async Task<List<Book>> GetByCount()
+        {
+            var response= await _db.Books
+                .OrderByDescending(x => x.DateCreate)
+                .Take(3).ToListAsync();
+            return response;
         }
     }
 }

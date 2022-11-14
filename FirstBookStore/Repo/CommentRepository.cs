@@ -4,6 +4,7 @@ using FirstBookStore.DbData;
 using FirstBookStore.Models.DbModels;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using FirstBookStore.Repo.Interfaces;
 
 namespace FirstBookStore.Repo
 {
@@ -46,11 +47,28 @@ namespace FirstBookStore.Repo
             await _db.SaveChangesAsync();
             return true;
         }
+
+        public async Task DeleteWithBook(int idOfBook)
+        {
+            var forDel = await _db.Comments.Where(x => x.BookId == idOfBook).ToListAsync();
+            foreach (var com in forDel)
+                await Delete(com);
+        }
         public async Task<List<Comment>> GetByBook(int targetBook)
         {
-            return await _db.Comments.Where(comment => comment.BookId == targetBook).ToListAsync();
+            return await _db.Comments
+                .Where(comment => comment.BookId == targetBook)
+                .ToListAsync();
         }
 
+        public async Task RemoveDislike(Comment entity)
+        {
+            var target = await Get(entity.id);
+            await Delete(entity);
+            target.Dislikes--;
+            await Create(target);
+        }
+        
         public async Task AddLike(Comment entity)
         {
             var target = await Get(entity.id);
@@ -74,14 +92,5 @@ namespace FirstBookStore.Repo
             target.Likes--;
             await Create(target);
         }
-
-        public async Task RemoveDislike(Comment entity)
-        {
-            var target = await Get(entity.id);
-            await Delete(entity);
-            target.Dislikes--;
-            await Create(target);
-        }
-
     }
 }

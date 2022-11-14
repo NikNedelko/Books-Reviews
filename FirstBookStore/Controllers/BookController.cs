@@ -1,10 +1,9 @@
 using System;
 using System.Threading.Tasks;
 using FirstBookStore.Models.DbModels;
-using FirstBookStore.Repo;
+using FirstBookStore.Repo.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Crypto.Prng;
+
 
 namespace FirstBookStore.Controllers
 {
